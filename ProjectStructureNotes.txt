@@ -18,6 +18,7 @@ Admin Components are in admin folder eg ng g c admin/admin-products
 Services:(Remember to register your services in providers array)
 	1)auth -->for signin and signOut
 	2)auth-guard -->for protecting routes
+	3)user -->for working with user object in database.
 	
 
 Github Link : git remote add origin https://github.com/MuhammadWaqasRasheed/AngulrOShop.git

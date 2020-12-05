@@ -60,16 +60,18 @@ import { LoginComponent } from './login/login.component';
 
     //my imports
     RouterModule.forRoot([
+      //routes available to anonymous users
       {path:'',component:HomeComponent},
       {path:'products',component:ProductsComponent},
       {path:'shopping-cart',component:ShoppingCartComponent},
-      {path:'check-out',component:CheckOutComponent,canActivate:[AuthGuardService]},
-      {path:'order-success',component:OrderSuccessComponent},
-      {path:'my/orders',component:MyOrdersComponent},
       {path:'login',component:LoginComponent},
+      //routes available to only logged in users
+      {path:'check-out',component:CheckOutComponent,canActivate:[AuthGuardService]},
+      {path:'order-success',component:OrderSuccessComponent,canActivate:[AuthGuardService]},
+      {path:'my/orders',component:MyOrdersComponent,canActivate:[AuthGuardService]},
       //now defining routes
-      {path:'admin/products',component:AdminProductsComponent},
-      {path:'admin/orders',component:AdminOrdersComponent},
+      {path:'admin/products',component:AdminProductsComponent,canActivate:[AuthGuardService]},
+      {path:'admin/orders',component:AdminOrdersComponent,canActivate:[AuthGuardService]},
     ]),
   ],
   providers: [
