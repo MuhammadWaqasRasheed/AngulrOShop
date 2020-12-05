@@ -1,0 +1,33 @@
+Components 
+	1)bn-navbar --->Bootstrap Navbar
+
+Components for Public Area
+	1)home
+	2)products
+	3)shopping-cart
+	4)check-out
+	5)order-success
+	6)my-orders
+	7)login
+
+Components for Private Area or Logged in users.
+Admin Components are in admin folder eg ng g c admin/admin-products
+	1)admin-products
+	2)admin-orders
+
+Services:(Remember to register your services in providers array)
+	1)auth -->for signin and signOut
+	2)auth-guard -->for protecting routes
+	
+
+Github Link : git remote add origin https://github.com/MuhammadWaqasRasheed/AngulrOShop.git
++  Created service account github-action-318635843 with Firebase Hosting admin permissions.
++  Uploaded service account JSON to GitHub as secret FIREBASE_SERVICE_ACCOUNT_OSHOP_298DB.
+i  You can manage your secrets at https://github.com/MuhammadWaqasRasheed/AngulrOShop/settings/secrets.
+? Set up the workflow to run a build script before every deploy? (y/N)
+
+FireBaseLinks:
+Project Console: https://console.firebase.google.com/project/oshop-298db/overview
+Hosting URL: https://oshop-298db.web.app
+
+
