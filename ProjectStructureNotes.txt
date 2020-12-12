@@ -14,11 +14,27 @@ Components for Private Area or Logged in users.
 Admin Components are in admin folder eg ng g c admin/admin-products
 	1)admin-products
 	2)admin-orders
+	3)product-form
 
 Services:(Remember to register your services in providers array)
 	1)auth -->for signin and signOut
 	2)auth-guard -->for protecting routes
 	3)user -->for working with user object in database.
+	4)admin-auth-guard  ->>for protecting admin routes.
+	5)category Service  --> for getting categories of food/items from firbase
+	6)PRoduct Service   -->For Stroing New Prodcts in  Database
+
+
+in our auth service there are two data members 
+1)user$ : represents an observable of firebase.auth
+2)appUser$ : represents an observable of firebase.AppUser or database
+
+Interfaces:
+	Now i am creating a folder named models.there i will create an interace user for representing firebase user
+	object in our application.
+
+Description:
+	Every time user logs in we save/update it in database
 	
 
 Github Link : git remote add origin https://github.com/MuhammadWaqasRasheed/AngulrOShop.git

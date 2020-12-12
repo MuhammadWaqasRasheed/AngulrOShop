@@ -1,4 +1,4 @@
-import { UserService } from './../user.service';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  constructor(private user:UserService) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private db:AngularFireDatabase) {
+    let data=this.db.object('users/'+1).valueChanges().subscribe(obj=>{
+      console.log(obj)
+    })
+    
+  }  
 
 }

@@ -1,22 +1,35 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 //imports for firebase
 import firebase from 'firebase/app';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestore } from '@angular/fire/firestore';
-
-
-
+import { AngularFireDatabase, AngularFireObject, snapshotChanges } from '@angular/fire/database';
+import { AppUser } from 'src/models/app-user';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService  {
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private db:AngularFireDatabase) { }
 
-  save(){
-    let data={"truth":"Allah Almighty Is Greatest OF All"}
-    this.firestore.collection('users').add(data).then(res=>{console.log('Successfull')},err=>{console.log(err)})
+  save(user:firebase.auth.UserCredential){
+    this.db.object('users/'+user.user?.uid).update({
+      name:user.user?.displayName,
+      email:user.user?.email
+    })
   }
+
+  //returns database refrence to that userobject 
+  get(uid:string)
+  {
+    return this.db.object('users/'+uid).valueChanges().map(user=>{
+      let myUser:any=user
+      let appUser:AppUser=myUser
+      return appUser
+    });
+  }
+
+  
+  
 }
