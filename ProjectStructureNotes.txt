@@ -22,7 +22,7 @@ Services:(Remember to register your services in providers array)
 	3)user -->for working with user object in database.
 	4)admin-auth-guard  ->>for protecting admin routes.
 	5)category Service  --> for getting categories of food/items from firbase
-	6)PRoduct Service   -->For Stroing New Prodcts in  Database
+	6)Product Service   -->For Stroing New Prodcts in  Database
 
 
 in our auth service there are two data members 
@@ -32,6 +32,8 @@ in our auth service there are two data members
 Interfaces:
 	Now i am creating a folder named models.there i will create an interace user for representing firebase user
 	object in our application.
+	1)AppUser    -->to represent User object of type Firebase.User 
+	2)Products   --> to represent products in our database
 
 Description:
 	Every time user logs in we save/update it in database

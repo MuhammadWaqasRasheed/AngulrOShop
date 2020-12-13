@@ -1,1 +1,68 @@
-<a routerLink="/admin/products/new" class="btn btn-primary mt-4">New Product</a> 
+<p> <!--wrapping this in p tag to put some space between it and table below it.-->
+    <a routerLink="/admin/products/new" class="btn btn-primary mt-4">New Product</a> 
+</p>
+<p>
+    <input 
+        #query
+        (keyup)="filter(query.value)"
+        type="text" class="form-control" placeholder="Search....."
+    >
+</p>
+
+<data-table
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)" >
+    <!--for title-->
+    <data-table-column
+        [property]="'title'"
+        [header]="'Title'"
+        [sortable]="true"
+        [resizeable]="true" >
+        <ng-template #dataTableCell let-item="item">
+            {{ item.data.title }}
+        </ng-template>
+    </data-table-column>   
+    <!--for Price-->
+    <data-table-column
+        [property]="'price'"
+        [header]="'Price'"
+        [sortable]="true"
+        [resizeable]="true" >
+        <ng-template #dataTableCell let-item="item">
+                {{ item.data.price | currency:'USD':true}}
+        </ng-template>
+    </data-table-column>
+    <!--for edit-->
+    <data-table-column
+        [property]="'$key'"
+        [sortable]="true" >
+        <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="['/admin/products/',item.key]"> Edit </a>
+        </ng-template>
+    </data-table-column>
+</data-table>
+
+
+
+
+<!--
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of filteredProducts" >
+            <td>{{ p.data.title }}</td>
+            <td>{{ p.data.price | currency:'USD':true }}</td>
+            <td>
+                <a [routerLink]="['/admin/products/',p.key]"> Edit </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+-->

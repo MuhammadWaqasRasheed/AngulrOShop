@@ -1,6 +1,7 @@
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable, Query } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { Key } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class CategoryService {
 
   getCategories()
   {
-      let data=this.db.list('/categories').valueChanges()
-      return data;
+    return this.db.list('/categories').snapshotChanges()
+    .map( categories =>{
+      return categories.map(category => ({ key:category.key , data:category.payload.val() }))
+    })
   }
 }

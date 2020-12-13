@@ -12,6 +12,14 @@ import { NgModule } from '@angular/core';
 //forms module
 import { FormsModule } from '@angular/forms';
 
+//ng2-validation (a library for forms validation).
+import { CustomFormsModule } from 'ng2-validation';
+
+import { DataTableModule } from 'angular5-data-table';
+
+//angular-4-data-table (a library for table pagination and soritn etc g).
+
+
 //For Firebase 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -61,6 +69,11 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     //forms module
     FormsModule,
 
+    //ng2-validations Module(For applying validations to forms)
+    CustomFormsModule,
+
+    DataTableModule,
+
     //for firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
@@ -81,18 +94,21 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
       {path:'order-success',component:OrderSuccessComponent,canActivate:[AuthGuardService]},
       {path:'my/orders',component:MyOrdersComponent,canActivate:[AuthGuardService]},
       //now defining routes
+      {path:'admin/products/new',component:ProductFormComponent,canActivate:[AuthGuardService,AdminAuthGuardService]},
+      {path:'admin/products/:id',component:ProductFormComponent,canActivate:[AuthGuardService,AdminAuthGuardService]},
       {path:'admin/products',component:AdminProductsComponent,canActivate:[AuthGuardService,AdminAuthGuardService]},
       {path:'admin/orders',component:AdminOrdersComponent,canActivate:[AuthGuardService,AdminAuthGuardService]},
-      {path:'admin/products/new',component:ProductFormComponent,canActivate:[AuthGuardService,AdminAuthGuardService]},
+      
     ]),
   ],
   providers: [
     AuthService,
     AuthGuardService,
-    UserService,
     AdminAuthGuardService,
-    CategoryService,
-    ProductService
+    //Firebase services
+    UserService,  //for authentication
+    CategoryService,  //for getting categories from firebase
+    ProductService    //for stroing products to firebase 
   ],
   bootstrap: [AppComponent]
 })
