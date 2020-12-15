@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './shopping-cart.service';
 import { ProductService } from './product.service';
 import { CategoryService } from './category.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
@@ -45,6 +46,8 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 
 @NgModule({
@@ -60,7 +63,9 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     //my imports
     RouterModule.forRoot([
       //routes available to anonymous users
-      {path:'',component:HomeComponent},
+      {path:'',component:ProductsComponent},
       {path:'products',component:ProductsComponent},
       {path:'shopping-cart',component:ShoppingCartComponent},
       {path:'login',component:LoginComponent},
@@ -108,7 +113,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     //Firebase services
     UserService,  //for authentication
     CategoryService,  //for getting categories from firebase
-    ProductService    //for stroing products to firebase 
+    ProductService,   //for stroing products to firebase 
+    ShoppingCartService,  // to set ang get cart id from firebase
   ],
   bootstrap: [AppComponent]
 })

@@ -12,10 +12,11 @@ import 'rxjs/add/operator/take';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss']
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent {
 
   categories$:Observable<any>
   product={}
+  
   id:any   //this id refers to firebase object 
 
   constructor(
@@ -37,11 +38,6 @@ export class ProductFormComponent implements OnInit {
       }).subscribe(p=> this.product=p)
     }
   }
-
-  ngOnInit(): void {
-
-  }
-
   save(product:any)
   {
     //actually product here is form data

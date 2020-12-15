@@ -1,0 +1,18 @@
+<div class="list-group display-sticky-80 ">
+    <a
+        class="list-group-item list-group-item-action"
+        routerLink="/"
+        [class.active]="!category"
+    >
+    All Categories
+    </a>
+    <a 
+        *ngFor="let c of categories$ | async "
+        class="list-group-item list-group-item-action "
+        routerLink="/"
+        [queryParams]="{category:c.key}"
+        [class.active]="category==c.key" 
+    > <!--[class.active]="category==c.key" is used to highlight selected category-->
+        {{c.data.name}}
+    </a>
+</div>

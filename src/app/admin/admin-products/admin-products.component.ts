@@ -11,14 +11,16 @@ import { DataTableResource }  from 'angular5-data-table';
 })
 export class AdminProductsComponent implements OnInit,OnDestroy {
 
-  products:Products[];
+  products:Products[]=[];
   subscription:Subscription
   //now defining fields for angular 5 data table
   tableResource:DataTableResource<Products>;
   items:Products[]=[];
-  itemCount:number;
+  itemCount:number=0;
 
   constructor(private productService:ProductService) {
+    let p:any  //write this just to remove compilation error
+    this.tableResource=p
       this.subscription= productService.getAll()
       .map(x=>{
         let p:any=x
@@ -43,7 +45,7 @@ export class AdminProductsComponent implements OnInit,OnDestroy {
 
   //here params is an argument containing meta-data about table.
   //this function will automatically be called when we chage table properties
-   reloadItems(params){
+   reloadItems(params:any){
      if(!this.tableResource) return;
      console.log(params)
      this.tableResource.query(params)

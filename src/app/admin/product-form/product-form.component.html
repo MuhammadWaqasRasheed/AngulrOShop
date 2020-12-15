@@ -58,11 +58,10 @@
     <div *ngIf="product.title" class="col-md-6 mt-4">
         <!--Card Code-->
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{ product.imageUrl }}">
+            <img *ngIf="product.imageUrl" [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}" >
             <div class="card-body">
-              <h5 class="card-title">{{product.title }}</h5>
-              <p class="card-text">{{product.price|currency:'USD':true }}</p>
-              <!-- here in this pipe  |currency:'USD':true 2nd argument true will display a $ sign with currency-->
+              <h5 class="card-title">{{product.title}}</h5>
+              <p class="card-text">{{product.price |currency:'USD':true}}</p>
             </div>
           </div>
     </div>

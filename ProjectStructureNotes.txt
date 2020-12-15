@@ -3,12 +3,14 @@ Components
 
 Components for Public Area
 	1)home
-	2)products
+	2)products --> To display the products to user  ->>in this component i further created another component named product-filter (beacuse we only using it in this component).
 	3)shopping-cart
 	4)check-out
 	5)order-success
 	6)my-orders
 	7)login
+	8)product-card --> to display producst in our site as a bootstrap card. on admin and products page
+
 
 Components for Private Area or Logged in users.
 Admin Components are in admin folder eg ng g c admin/admin-products
@@ -23,6 +25,7 @@ Services:(Remember to register your services in providers array)
 	4)admin-auth-guard  ->>for protecting admin routes.
 	5)category Service  --> for getting categories of food/items from firbase
 	6)Product Service   -->For Stroing New Prodcts in  Database
+	7)shopping-cart  --> to save shopping cart id in firebase and retrieve that cart id later.
 
 
 in our auth service there are two data members 

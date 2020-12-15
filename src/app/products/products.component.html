@@ -1,1 +1,21 @@
-<p>products works!</p>
+<div class="row mt-4">
+    <div class="col-sm-3">
+        <product-filter [category]="category"></product-filter>
+    </div>
+
+    <div class="col-sm 9">
+        <div class="row">
+            <ng-container *ngFor="let p of filteredProducts; let i =  index">
+                <div class="col">
+                    <!--Allah almighty Is Greatest Of All-->
+                    <!--Card code start-->
+                    <product-card [product]="p"></product-card>
+                    <!--Card Code end-->
+                </div>
+                <div *ngIf=" (i+1)% 2 === 0" class="w-100"></div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+
